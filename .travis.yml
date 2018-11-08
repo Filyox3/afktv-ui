@@ -1,27 +1,26 @@
----
 language: node_js
 node_js:
-  - "6"
-
+- '6'
 sudo: false
 dist: trusty
-
 addons:
   chrome: stable
-
 cache:
   directories:
-    - $HOME/.npm
-
+  - "$HOME/.npm"
 env:
   global:
-    # See https://git.io/vdao3 for details.
-    - JOBS=1
-
+  - JOBS=1
 before_install:
-  - npm config set spin false
-
+- npm config set spin false
 script:
-  - npm run lint:hbs
-  - npm run lint:js
-  - npm test
+- npm run lint:hbs
+- npm run lint:js
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: xm5RVJcMlvmAM9wX6FctyJY08W2ctnmKJ6o3Ool0f1XlGZDUdBXEQDdyRntVfIKRBC/GJlkqqWHAmZB2zHogFgXf8XfzkcPQWPCUre0sVBf6ECv7ca6A6zFunwqrdcoattRra8jqbb2ak37yo7SvkAMPoQ7Zt/mJF6P3ymW2wfUkn1rleRUHcnisPiWM+PBFjQ4QlyWXET8bjFv4Be3ZADHIpJuC8ARENN2OK8rzBYGTfiqN0m3Vgrgs/JUFz0k7Fn/lvAUodvTEzKotfeI+thj9yGZwiqMam+D4oqozDALIus4OTQYeG6SjhuRPmDYUhImcUTLCVx0TiTYOpTvFg1edpf5Asdi24H+9jRuam80EnwO33CtnDLhHpflV7qYn06YcIuKYfXGaCVOJE4eq4tXedpBII/qFQK0cHZJF98TArd63kxvK1/c/5XtR4mnyAmIXOTJ1ESY6mjoICIPYEDz8kNb5r89u6F6PBT0gPJuvsEfGxhQooEaCwy0cffVTByauHMXOgBcUDse4lQifoJFfo6OzmedvPw8oQDI++01qSayqUubIMVGJN52FosdKObDWlL8zgvL3cnzHDtFVqo9rUGtjt+ZEuDFTvEdpLxrfNKE9nH9SuOOzPAuIRQ/jFTnDy3zhkgmAuqhjgEsFo8BkJyaYDr34L8k26/hu5A0=
+  app: afktv-ui
+  on:
+    repo: Filyox3/afktv-ui
